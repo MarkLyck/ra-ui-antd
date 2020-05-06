@@ -67,9 +67,9 @@ import { FieldProps, InjectedFieldProps, fieldPropTypes } from './types';
  *
  * **Tip**: <ReferenceField> sets `translateChoice` to false by default.
  */
-export const SelectField: FunctionComponent<
-    ChoicesProps & FieldProps & InjectedFieldProps
-> = ({
+export const SelectField: FunctionComponent<ChoicesProps &
+    FieldProps &
+    InjectedFieldProps> = ({
     className,
     emptyText,
     source,
@@ -87,7 +87,11 @@ export const SelectField: FunctionComponent<
         translateChoice,
     });
 
-    const choice = choices.find(choice => getChoiceValue(choice) === value);
+    const choice = choices.find(choice => {
+        console.log('choice: ', choice);
+        return getChoiceValue(choice) === value;
+    });
+    console.log('choice: ', choice);
 
     if (!choice) {
         return emptyText ? (
