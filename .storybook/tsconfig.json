@@ -1,0 +1,53 @@
+{
+    "compilerOptions": {
+        "outDir": "lib",
+        "target": "ES5",
+        "module": "commonjs",
+        "lib": ["es2017", "dom"],
+        "allowJs": true,
+        "jsx": "react",
+        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "baseUrl": "../",
+        "paths": {
+            "~*": ["../src/*"],
+            "common/*": ["../src/common/*"]
+        }
+    },
+    "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js"],
+    "include": ["../src", ".storybook/decorators/**/*"]
+}
+
+// {
+//   "compilerOptions": {
+//     "outDir": "build/lib",
+//     "module": "commonjs",
+//     "strictNullChecks": true,
+//     "moduleResolution": "node",
+//     "esModuleInterop": true,
+//     "experimentalDecorators": true,
+//     "jsx": "react",
+//     "noUnusedParameters": true,
+//     "noUnusedLocals": true,
+//     "noImplicitAny": true,
+//     "noImplicitThis": true,
+//     "declaration": true,
+//     "allowSyntheticDefaultImports": true,
+//     "emitDecoratorMetadata": true,
+//     "target": "es5",
+//     "lib": ["es5", "es6", "es7", "es2017", "dom"],
+//     "sourceMap": true,
+//     "types": ["react", "jest", "node"],
+//     "baseUrl": "src",
+//     "paths": {
+//       "common/*": ["src/common/*"],
+//       "components/*": ["src/components/*"],
+//       "tests/*": ["tests/*"]
+//     }
+//   },
+//   "include": ["src/**/*", ".storybook/decorators/**/*", "../src/typings.d.ts"],
+//   "exclude": ["node_modules", "dist"]
+// }
