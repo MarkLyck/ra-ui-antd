@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ActionDelete from '@material-ui/icons/Delete';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { SimpleForm } from '../form';
 import {
@@ -9,11 +10,11 @@ import {
     // Edit,
     EditView,
     EditActions,
-    EditGuesser,
+    // EditGuesser,
     // Show,
     ShowView,
     ShowActions,
-    ShowGuesser,
+    // ShowGuesser,
     SimpleShowLayout,
     TabbedShowLayout,
     Tab,
@@ -24,14 +25,9 @@ import { TextInput, BooleanInput, NumberInput, DateInput } from '../input';
 import { TextField, BooleanField, NumberField, DateField } from '../field';
 
 export default {
-    title: 'detail',
+    title: 'DONE_detail',
     decorators: [withKnobs],
 };
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
 
 const mockRecord = {
     id: 1,
@@ -160,11 +156,11 @@ export const show_actions = () => {
 
 export const simple_show_layout = () => (
     <SimpleShowLayout
-        basePath=""
-        resource=""
+        basePath="/"
+        resource="test"
         version="1"
         className="simple-show-layout"
-        record={mockData}
+        record={mockRecord}
     >
         <TextField source="text" resource="test" record={mockRecord} />
         <BooleanField source="boolean" resource="test" record={mockRecord} />
@@ -177,7 +173,7 @@ export const tabbed_show_layout = () => (
     <TabbedShowLayout>
         <Tab
             basePath=""
-            icon={null}
+            icon={<ActionDelete />}
             label="tab 1"
             className="tab"
             record={mockRecord}
@@ -186,8 +182,26 @@ export const tabbed_show_layout = () => (
             resource="test"
             context={false}
         >
-            <TextField source="title" />
-            <TextField source="subtitle" />
+            <SimpleShowLayout
+                basePath="/"
+                resource="test"
+                version="1"
+                className="simple-show-layout"
+                record={mockRecord}
+            >
+                <TextField source="text" resource="test" record={mockRecord} />
+                <BooleanField
+                    source="boolean"
+                    resource="test"
+                    record={mockRecord}
+                />
+                <NumberField
+                    source="number"
+                    resource="test"
+                    record={mockRecord}
+                />
+                <DateField source="date" resource="test" record={mockRecord} />
+            </SimpleShowLayout>
         </Tab>
         <Tab
             basePath=""
@@ -200,28 +214,55 @@ export const tabbed_show_layout = () => (
             resource="test"
             context={false}
         >
-            <TextField source="category" />
+            <TextField source="text" resource="test" record={mockRecord} />
+            <NumberField source="number" resource="test" record={mockRecord} />
         </Tab>
     </TabbedShowLayout>
 );
 
-export const tab = () => (
-    <Tab
-        basePath=""
-        icon={null}
-        label="label"
-        className="tab"
-        record={mockRecord}
-        value="header"
-        contentClassName="tab-content"
-        resource="test"
-        context={false}
-    >
-        <div>Tab</div>
-    </Tab>
-);
+// export const tab = () => (
+//     <Tab
+//         basePath=""
+//         icon={<ActionDelete />}
+//         label="label"
+//         className="tab"
+//         record={mockRecord}
+//         value="header"
+//         contentClassName="tab-content"
+//         resource="test"
+//         context={false}
+//     >
+//         <div>children</div>
+//     </Tab>
+// );
+
 export const tabbed_show_layout_tabs = () => (
     <TabbedShowLayoutTabs basePath="" resource="">
-        <div>test</div>
+        <Tab
+            basePath=""
+            icon={<ActionDelete />}
+            label="tab 1"
+            className="tab"
+            record={mockRecord}
+            value="header"
+            contentClassName="tab-content"
+            resource="test"
+            context={false}
+        >
+            <div />
+        </Tab>
+        <Tab
+            basePath=""
+            icon={null}
+            label="tab 2"
+            className="tab"
+            record={mockRecord}
+            value="header"
+            contentClassName="tab-content"
+            resource="test"
+            context={false}
+        >
+            <div />
+        </Tab>
     </TabbedShowLayoutTabs>
 );

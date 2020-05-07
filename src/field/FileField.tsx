@@ -82,6 +82,7 @@ const FileField: FunctionComponent<Props & InjectedFieldProps> = props => {
     }
 
     const titleValue = get(record, title) || title;
+    console.log('titleValue: ', titleValue);
 
     return (
         <div
