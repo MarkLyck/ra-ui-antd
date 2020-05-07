@@ -20,10 +20,31 @@
     "license": "MIT",
     "scripts": {
         "build": "yarn run build-cjs && yarn run build-esm",
+        "test-unit": "jest",
         "build-cjs": "rimraf ./lib && tsc",
         "build-esm": "rimraf ./esm && tsc --outDir esm --module es2015",
         "watch": "tsc --outDir esm --module es2015 --watch",
         "storybook": "start-storybook -p 9001 -c .storybook --ci"
+    },
+    "jest": {
+        "setupFilesAfterEnv": [
+            "./test-setup.js"
+        ],
+        "preset": "ts-jest/presets/js-with-ts",
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/lib/",
+            "/esm/",
+            "/examples/simple/"
+        ],
+        "transformIgnorePatterns": [
+            "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
+        ],
+        "globals": {
+            "ts-jest": {
+                "isolatedModules": true
+            }
+        }
     },
     "devDependencies": {
         "@material-ui/core": "^4.3.3",
@@ -55,6 +76,8 @@
         "final-form": "^4.18.5",
         "final-form-arrays": "^3.0.1",
         "ignore-styles": "~5.0.1",
+        "jest": "^26.0.1",
+        "mutationobserver-shim": "^0.3.5",
         "ra-core": "^3.5.0",
         "react": "^16.9.0",
         "react-docgen-typescript-loader": "^3.7.2",
@@ -68,6 +91,7 @@
         "redux": "^3.7.2 || ^4.0.3",
         "redux-saga": "^1.1.3",
         "rimraf": "^2.6.3",
+        "ts-jest": "^25.5.0",
         "ts-loader": "^7.0.2",
         "typescript": "^3.8.3"
     },

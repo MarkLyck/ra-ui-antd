@@ -23,12 +23,13 @@ import {
 } from './index';
 
 export default {
-    title: 'button',
+    title: 'DONE_button',
     decorators: [withKnobs],
 };
 
 export const bulk_delete_button = () => {
     const undoable = boolean('undoable', false);
+    const label = text('label', undefined);
 
     return (
         <BulkDeleteButton
@@ -36,48 +37,143 @@ export const bulk_delete_button = () => {
             resource="test"
             selectedIds={[1, 2, 3]}
             undoable={undoable}
+            label={label}
         />
     );
 };
 
-export const bulk_delete_with_confirm_button = () => (
-    <BulkDeleteWithConfirmButton
-        icon={<ActionDelete />}
-        resource="test"
-        selectedIds={[1, 2, 3]}
-    />
-);
+export const bulk_delete_with_confirm_button = () => {
+    const label = text('label', undefined);
+    const confirmTitle = text('confirm title', undefined);
+    const confirmContent = text('confirm content', undefined);
 
-export const bulk_delete_with_undo_button = () => (
-    <BulkDeleteWithUndoButton
-        icon={<ActionDelete />}
-        resource="test"
-        selectedIds={[1, 2, 3]}
-    />
-);
+    return (
+        <BulkDeleteWithConfirmButton
+            icon={<ActionDelete />}
+            resource="test"
+            selectedIds={[1, 2, 3]}
+            label={label}
+            confirmTitle={confirmTitle}
+            confirmContent={confirmContent}
+        />
+    );
+};
 
-export const bulk_export_button = () => (
-    <BulkExportButton resource="test" selectedIds={[1, 2, 3]} />
-);
+export const bulk_delete_with_undo_button = () => {
+    const label = text('label', undefined);
 
-export const clone_button = () => <CloneButton />;
+    return (
+        <BulkDeleteWithUndoButton
+            icon={<ActionDelete />}
+            resource="test"
+            selectedIds={[1, 2, 3]}
+            label={label}
+        />
+    );
+};
 
-export const create_button = () => <CreateButton />;
+export const bulk_export_button = () => {
+    const label = text('label', undefined);
 
-export const delete_button = () => <DeleteButton />;
+    return (
+        <BulkExportButton
+            resource="test"
+            selectedIds={[1, 2, 3]}
+            label={label}
+        />
+    );
+};
 
-export const delete_with_confirm_button = () => (
-    <DeleteWithConfirmButton record={{ id: 1 }} resource="test" />
-);
-export const delete_with_undo_button = () => <DeleteWithUndoButton />;
+export const clone_button = () => {
+    const label = text('label', undefined);
 
-export const edit_button = () => <EditButton />;
-export const export_button = () => <ExportButton />;
-export const list_button = () => <ListButton />;
-export const save_button = () => <SaveButton />;
-export const show_button = () => <ShowButton />;
-export const refresh_button = () => <RefreshButton />;
-export const refresh_icon_button = () => <RefreshIconButton />;
+    return <CloneButton label={label} />;
+};
+
+export const create_button = () => {
+    const label = text('label', undefined);
+
+    return <CreateButton label={label} />;
+};
+
+export const delete_button = () => {
+    const label = text('label', undefined);
+    const undoable = boolean('undoable', false);
+
+    return (
+        <DeleteButton
+            record={{ id: 1 }}
+            resource="test"
+            label={label}
+            undoable={undoable}
+        />
+    );
+};
+
+export const delete_with_confirm_button = () => {
+    const label = text('label', undefined);
+    const confirmTitle = text('confirm title', undefined);
+    const confirmContent = text('confirm content', undefined);
+
+    return (
+        <DeleteWithConfirmButton
+            record={{ id: 1 }}
+            resource="test"
+            label={label}
+            confirmTitle={confirmTitle}
+            confirmContent={confirmContent}
+        />
+    );
+};
+
+export const delete_with_undo_button = () => {
+    const label = text('label', undefined);
+    return <DeleteWithUndoButton label={label} />;
+};
+
+export const edit_button = () => {
+    const label = text('label', undefined);
+    return <EditButton label={label} />;
+};
+
+export const export_button = () => {
+    const label = text('label', undefined);
+    return <ExportButton label={label} />;
+};
+export const list_button = () => {
+    const label = text('label', undefined);
+    return <ListButton label={label} />;
+};
+export const save_button = () => {
+    const label = text('label', undefined);
+    const saving = boolean('saving', false);
+    const invalid = boolean('invalid', false);
+    const submitOnEnter = boolean('submitOnEnter', false);
+    const pristine = boolean('pristine', false);
+
+    return (
+        <SaveButton
+            label={label}
+            onSave={console.log}
+            saving={saving}
+            invalid={invalid}
+            pristine={pristine}
+            submitOnEnter={submitOnEnter}
+        />
+    );
+};
+export const show_button = () => {
+    const label = text('label', undefined);
+    return <ShowButton label={label} />;
+};
+export const refresh_button = () => {
+    const label = text('label', undefined);
+    return <RefreshButton label={label} />;
+};
+export const refresh_icon_button = () => {
+    const label = text('label', undefined);
+    return <RefreshIconButton label={label} />;
+};
 
 export const button = () => {
     const button_text = text('Text', 'Test');

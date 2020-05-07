@@ -7,5 +7,12 @@
         "field",
         "resetable",
         "text"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#723ba8",
+        "statusBar.border": "#723ba8",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#8b53c3"
+    },
+    "peacock.color": "#723ba8"
 }
